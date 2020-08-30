@@ -9,9 +9,9 @@ one:
   borderColor: purple
 
 two:
-  title: MyString
-  start: MyString
-  end: MyString
-  backgroundColor: MyString
-  borderColor: MyString
+  title: writing
+  start: 2020-03-02
+  end: 2020-03-22
+  backgroundColor: green
+  borderColor: green
   allDay: false

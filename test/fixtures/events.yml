@@ -1,12 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  start: MyString
-  end: MyString
-  backgroundColor: MyString
-  borderColor: MyString
-  allDay: false
+  title: studying,
+  start: 2020-08-12,
+  end: 2020-08-17,
+  allDay: true,
+  backgroundColor: purple,
+  borderColor: purple
 
 two:
   title: MyString

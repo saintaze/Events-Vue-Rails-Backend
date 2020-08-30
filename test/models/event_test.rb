@@ -14,13 +14,13 @@ class EventTest < ActiveSupport::TestCase
     assert_not @event_invalid.valid?
   end
 
-  test 'Event with valid attributes should be saved' do
+  test 'event with valid attributes should be saved' do
     assert_difference 'Event.count' do
       @event_valid.save
     end
   end
 
-  test 'Event with invalid attributes should not be saved' do
+  test 'event with invalid attributes should not be saved' do
     assert_no_difference 'Event.count' do
       @event_invalid.save
     end

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
-  
   setup do
     @event = events(:one)
   end
@@ -64,5 +63,4 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :unprocessable_entity
   end
-
 end

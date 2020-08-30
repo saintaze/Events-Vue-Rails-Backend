@@ -39,7 +39,7 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # update action test
-  test "should not update event with invalid attributes" do
+  test "should not update event with invalid attributes or invalid id" do
     # fail with invalid event id
     patch api_v1_event_url(8982), params: {event: {start: '2020-11-01', end: '2020-11-09'}}, as: :json
     assert_response :unprocessable_entity
@@ -49,11 +49,20 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
+  # delete action test
+  test "should delete event with valid id" do
+    assert_difference 'Event.count', -1 do
+      delete api_v1_event_url(@event)
+    end
+    assert_response :success
+  end
 
-
-  # test "should get destroy" do
-  #   get api_v1_events_destroy_url
-  #   assert_response :success
-  # end
+  # delete action test
+  test "should not delete event with invalid id" do
+    assert_no_difference 'Event.count' do
+      delete api_v1_event_url(8765)
+    end
+    assert_response :unprocessable_entity
+  end
 
 end

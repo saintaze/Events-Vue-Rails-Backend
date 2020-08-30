@@ -24,6 +24,11 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def destroy
+    if @event && @event.destroy
+      render json: {event: @event}, status: :ok
+    else 
+      render json: {error: 'event could not be deleted'}, status: :unprocessable_entity
+    end
   end
 
   private   

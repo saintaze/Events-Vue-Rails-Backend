@@ -1,5 +1,6 @@
 class Api::V1::EventsController < ApplicationController
-  
+  before_action :set_event, only: [:destroy, :update]
+
   def index
     @events = Event.all
     render json: {events: @events}, status: :ok
@@ -15,12 +16,21 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def update
+    if @event && !event_params.empty? && @event.update(event_params)
+      render json: {event: @event}, status: :ok
+    else 
+      render json: {error: 'event could not be updated'}, status: :unprocessable_entity
+    end    
   end
 
   def destroy
   end
 
-  private 
+  private   
+
+    def set_event
+      @event = Event.find_by_id(params[:id])
+    end
 
     def event_params
       params.require(:event).permit(:title, :start, :end, :allDay, :backgroundColor, :borderColor)

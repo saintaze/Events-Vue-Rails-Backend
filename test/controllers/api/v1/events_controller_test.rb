@@ -2,7 +2,11 @@ require 'test_helper'
 
 class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
   
-  # index test
+  setup do
+    @event = events(:one)
+  end
+
+  # index action test
   test "should get index" do
     get api_v1_events_url, as: :json
     assert_response :success
@@ -10,7 +14,7 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_equal response_data['events'].size, events().size
   end
 
-  # create test
+  # create action test
   test "should create event with valid attributes" do
     assert_difference 'Event.count', 1 do
       new_event = {title: 'cooking', start: '2020-09-08', end: '2020-09-12', backgroundColor: 'green', borderColor: 'green', allDay: true}
@@ -19,7 +23,7 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
-  # create test
+  # create action test
   test "should not create event with invalid attributes" do
     assert_no_difference 'Event.count' do
       new_event = {title: 'cooking'}
@@ -28,10 +32,24 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
-  # test "should get update" do
-  #   get api_v1_events_update_url
-  #   assert_response :success
-  # end
+  # update action test
+  test "should update event with valid attributes" do
+    patch api_v1_event_url(@event), params: {event: {start: '2020-11-01', end: '2020-11-09'}}, as: :json
+    assert_response :success
+  end
+
+  # update action test
+  test "should not update event with invalid attributes" do
+    # fail with invalid event id
+    patch api_v1_event_url(8982), params: {event: {start: '2020-11-01', end: '2020-11-09'}}, as: :json
+    assert_response :unprocessable_entity
+    
+    # fail with invalid update params
+    patch api_v1_event_url(@event), params: {event: {bookName: 'Rainbow Six'}}, as: :json
+    assert_response :unprocessable_entity
+  end
+
+
 
   # test "should get destroy" do
   #   get api_v1_events_destroy_url

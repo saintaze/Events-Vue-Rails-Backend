@@ -1,24 +1,38 @@
-# Events-Backend
+# Events-Vue-Rails-Backend
+An events app that allows creating events on a calendar. It uses Rails API to perform CRUD and persist data.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+See the [events-vue-rails-frontend](https://vue-notes.ayezahmed.now.sh/) repo for the frontend.
 
-Things you may want to cover:
+## Features
++ CRUD functionality for Events
++ Minitest used for testing
 
-* Ruby version
+## Built With
++ Ruby
++ Ruby on Rails 
++ Minitest
 
-* System dependencies
+## Getting Started
+```
+# install dependencies
+bundle install
 
-* Configuration
+# serve at localhost:3000
+rails server
+```
+## Tests
 
-* Database creation
+```
+rails test
 
-* Database initialization
+```
 
-* How to run the test suite
+## Note
 
-* Services (job queues, cache servers, search engines, etc.)
+Setup [events-vue-rails-frontend](https://vue-notes.ayezahmed.now.sh/) to view app in the browser
 
-* Deployment instructions
+## Live Version
+#### URL: [Start making events](https://vue-notes.ayezahmed.now.sh/)
 
-* ...
+## Author
+Saintaze [@saintaze](https://github.com/saintaze/)

@@ -14,8 +14,8 @@ See the [events-vue-rails-frontend](https://github.com/saintaze/Events-Vue-Rails
 
 ## Getting Started
 ```
-# install dependencies
-bundle install
+# install gems without production gems
+bundle install --without=production
 
 # serve at localhost:3000
 rails server

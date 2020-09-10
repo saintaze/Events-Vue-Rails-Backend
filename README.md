@@ -16,6 +16,7 @@ See the [events-vue-rails-frontend](https://github.com/saintaze/Events-Vue-Rails
 ```
 # install gems without production gems
 bundle install --without=production
+rails db:migrate
 
 # serve at localhost:3000
 rails server
